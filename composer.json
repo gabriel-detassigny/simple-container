@@ -1,0 +1,38 @@
+{
+    "name": "gdetassigny/simple-container",
+    "description": "A simple implementation of the standard container interface, with support for autowiring",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Gabriel de Tassigny",
+            "email": "gabriel@multivac.cc"
+        }
+    ],
+    "keywords": [
+        "container",
+        "dependency",
+        "DI"
+    ],
+    "require": {
+        "php": ">= 7.2",
+        "psr/container": "^1.0",
+        "symfony/yaml": "^4.2"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^8.4",
+        "phake/phake": "^3.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "GabrielDeTassigny\\SimpleContainer\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "GabrielDeTassigny\\SimpleContainer\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "run-tests": "vendor/bin/phpunit"
+    }
+}
