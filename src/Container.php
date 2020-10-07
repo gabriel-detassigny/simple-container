@@ -24,6 +24,14 @@ class Container implements ContainerInterface
     /**
      * {@inheritdoc}
      */
+    public function has($id)
+    {
+        return isset($this->objects[$id]) || $this->strategy->hasDefinition($id);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function get($id)
     {
         if (isset($this->objects[$id])) {
@@ -35,14 +43,6 @@ class Container implements ContainerInterface
         }
 
         return $this->getServiceInstance($id);
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function has($id)
-    {
-        return isset($this->objects[$id]) || $this->strategy->hasDefinition($id);
     }
 
     private function getServiceInstance(string $id): object
