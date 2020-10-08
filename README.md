@@ -73,3 +73,13 @@ $container = $containerProvider->getContainer();
 
 $container->get(Foo::class); // returns the instance of Foo defined in FooServiceProvider
 ```
+
+## Why should I use this instead of another container package?
+
+To be honest? Maybe you shouldn't. 
+I built this mostly out of interest to understand how containers work under the hood.
+There are a lot of more evolved PHP containers out there. 
+However, I tried to make mine straightforward to use.
+
+Furthermore, because it respects PSR-11's container interface, 
+you can always give it a go and later switch to another container package fairly easily if this one doesn't meet all your needs.
