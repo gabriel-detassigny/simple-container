@@ -9,7 +9,7 @@ It also supports manually defining dependencies in a YAML file, or even adding s
 
 ### Basic usage
 
-This package comes with a Container Provider class which should be your container for you very simply:
+Setting up a basic container is quite simple:
 
 ```php
 use GabrielDeTassigny\SimpleContainer\ContainerProvider;
@@ -74,12 +74,21 @@ $container = $containerProvider->getContainer();
 $container->get(Foo::class); // returns the instance of Foo defined in FooServiceProvider
 ```
 
-## Why should I use this instead of another container package?
+### Ordering
 
-To be honest? Maybe you shouldn't. 
+When called, the container will look for your service using all 3 above options in that order:
+- service provider
+- YAML config
+- autowiring
+
+## Why use this instead of another container package?
+
+To be honest? Maybe you shouldn't.
 I built this mostly out of interest to understand how containers work under the hood.
 There are a lot of more evolved PHP containers out there. 
-However, I tried to make mine straightforward to use.
 
-Furthermore, because it respects PSR-11's container interface, 
-you can always give it a go and later switch to another container package fairly easily if this one doesn't meet all your needs.
+However, I tried to make this package as straightforward to use as possible.
+If having a container up and running very quickly appeals to you then feel free to give this a go!
+
+Furthermore, as it respects the standard container interface, 
+you can always try it for a bit and later switch to another container package without too much hassle.
