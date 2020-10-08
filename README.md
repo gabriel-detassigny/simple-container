@@ -5,6 +5,15 @@ This is a simple implementation of the [standard container interface](https://ww
 This means that this package will attempt to figure out all your basic dependencies for you.
 It also supports manually defining dependencies in a YAML file, or even adding service providers for more complex dependencies.
 
+## Installation
+
+This package requires at least PHP 7.2.
+
+Install it using composer:
+```
+composer require gdetassigny/simple-container
+```
+
 ## How to use it
 
 ### Basic usage
