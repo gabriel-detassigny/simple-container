@@ -2,7 +2,7 @@
 
 This is a simple implementation of the [standard container interface](https://www.php-fig.org/psr/psr-11/), with support for autowiring.
 
-This means that this package will allow figuring out all your basic dependencies for you. 
+This means that this package will attempt to figure out all your basic dependencies for you.
 It also supports manually defining dependencies in a YAML file, or even adding service providers for more complex dependencies.
 
 ## How to use it
@@ -64,11 +64,6 @@ class FooServiceProvider implements ServiceProvider
     {
         return new Foo('some-string');
     }
-}
-
-class Foo
-{
-    public function __construct(string $someString) {}
 }
 
 $containerProvider = new ContainerProvider();
