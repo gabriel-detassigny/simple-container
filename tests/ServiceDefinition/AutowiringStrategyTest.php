@@ -4,7 +4,6 @@ namespace GabrielDeTassigny\SimpleContainer\Tests\ServiceDefinition;
 
 use GabrielDeTassigny\SimpleContainer\Exception\NotFoundException;
 use GabrielDeTassigny\SimpleContainer\ServiceDefinition\AutowiringStrategy;
-use GabrielDeTassigny\SimpleContainer\ServiceDefinition\ServiceDefinition;
 use GabrielDeTassigny\SimpleContainer\Tests\Reflection;
 use PHPUnit\Framework\TestCase;
 
