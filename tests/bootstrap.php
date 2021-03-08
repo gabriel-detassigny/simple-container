@@ -10,4 +10,12 @@ namespace GabrielDeTassigny\SimpleContainer\Tests\Reflection {
     class ConstructorWithClassParam {
         public function __construct(\stdClass $param) {}
     }
+
+    class ConstructorWithDefaultParam {
+        public function __construct(?string $test = null) {}
+    }
+
+    class ConstructorWithPrimitiveParam {
+        public function __construct(string $test) {}
+    }
 }
