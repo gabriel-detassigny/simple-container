@@ -1,5 +1,8 @@
 # Simple Container
 
+[![Build Status](https://travis-ci.com/gabriel-detassigny/simple-container.svg?branch=master)](https://travis-ci.com/gabriel-detassigny/simple-container) 
+[![Coverage Status](https://coveralls.io/repos/github/gabriel-detassigny/simple-container/badge.svg?branch=master)](https://coveralls.io/github/gabriel-detassigny/simple-container?branch=master)
+
 This is a simple implementation of the [standard container interface](https://www.php-fig.org/psr/psr-11/), with support for autowiring.
 
 This means that this package will attempt to figure out all your basic dependencies for you.
