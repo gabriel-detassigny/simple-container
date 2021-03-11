@@ -6,6 +6,7 @@ use GabrielDeTassigny\SimpleContainer\Container;
 use GabrielDeTassigny\SimpleContainer\Exception\NotFoundException;
 use GabrielDeTassigny\SimpleContainer\ServiceDefinition\ServiceDefinition;
 use GabrielDeTassigny\SimpleContainer\ServiceDefinition\ServiceDefinitionStrategy;
+use GabrielDeTassigny\SimpleContainer\Tests\Reflection\ConstructorWithClassParam;
 use Phake;
 use Phake_IMock;
 use PHPUnit\Framework\TestCase;
@@ -69,6 +70,20 @@ class ContainerTest extends TestCase
         $actual = $this->container->get(self::ID);
 
         $this->assertInstanceOf(stdClass::class, $actual);
+    }
+
+    public function testGetReturnsInstanceWithDependencies(): void
+    {
+        Phake::when($this->strategy)->getDefinition(self::ID)
+            ->thenReturn(new ServiceDefinition(ConstructorWithClassParam::class, ['dependency']));
+
+        Phake::when($this->strategy)->hasDefinition('dependency')->thenReturn(true);
+        Phake::when($this->strategy)->getDefinition('dependency')
+            ->thenReturn(new ServiceDefinition(stdClass::class, []));
+
+        $actual = $this->container->get(self::ID);
+
+        $this->assertInstanceOf(ConstructorWithClassParam::class, $actual);
     }
 
     public function testGetInstantiateOnlyOnceForTwoCalls(): void
