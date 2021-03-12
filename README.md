@@ -35,12 +35,65 @@ That's it! You can now request your dependencies from the container, thanks to a
 $container->get(Foo\Bar::class); // returns an instance of Foo\Bar
 ``` 
 
+### Autowiring
+
+The container will be able to instantiate simple services which have straightforward dependencies in their constructors:
+
+The below examples can all be autowired:
+```php
+$container = (new ContainerProvider())->getContainer();
+
+class NoConstructor {}
+
+$container->get(NoConstructor::class);
+
+class ConstructorNoParam {
+    public function __construct() {}
+}
+
+$container->get(ConstructorNoParam::class);
+
+class ConstructorWithClassParam {
+    public function __construct(stdClass $param) {}
+}
+
+// Note: $param will be also instantiate and injected in the constructor
+$container->get(ConstructorWithClassParam::class);
+
+class ConstructorWithDefaultParam {
+    public function __construct(?string $test = null) {}
+}
+
+// Note: parameters with default values will be set to these values when autowired
+$container->get(ConstructorWithDefaultParam::class);
+```
+
+Some cases cannot be autowired:
+```php
+$container = (new ContainerProvider())->getContainer();
+
+class ConstructorWithPrimitiveParam {
+    public function __construct(string $test) {}
+}
+
+// Fails! Autowiring cannot figure out the value of the $test parameter.
+// Consider using a service provider
+$container->get(ConstructorWithPrimitiveParam::class);
+
+interface FooInterface {}
+class Bar implements FooInterface {}
+
+// Fails! Autowiring does not know which concrete class you want
+// Consider using either a YAML Config or a service provider 
+$container->get(FooInterface::class);
+```
+
 ### YAML Config
 
 Simple container also supports adding a YAML config to manually define dependencies.
 
-This can be useful for example to define a concrete class implementation for an interface.
-Or you may want to define a different name for your service than its class name. 
+This can be useful to define a concrete class implementation of an interface.
+Or you may want to define a different name for your service than its class name.
 ```yaml
 dependencies:
   Foo\Bar:
