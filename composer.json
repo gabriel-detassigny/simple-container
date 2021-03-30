@@ -35,6 +35,7 @@
     },
     "scripts": {
         "run-tests": "vendor/bin/phpunit",
-        "run-phpcs": "vendor/bin/phpcs --standard=PSR2 src/"
+        "run-phpcs": "vendor/bin/phpcs",
+        "run-phpcbf": "vendor/bin/phpcbf"
     }
 }
